@@ -20,7 +20,7 @@
 
 - Action: Search Philadelphia 
 - Expected Result: Two bookings: Liberty Lan inn and Museum Walk Hotel
-- Observed Result:
+- Observed Result: ![image alt](https://github.com/AJP7521/expedia-lite/blob/5fb05bbd311de3c3f8c73591d23986078d885ee8/Login%20Page.png)
 
 - Action: Blank Search
 - Expected Results: No bookings are shown
