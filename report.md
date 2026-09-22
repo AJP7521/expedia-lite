@@ -40,4 +40,4 @@
 
 ## Video Demo
 
-- ![video alt](https://github.com/AJP7521/expedia-lite/blob/cc0cbf3a820465e5d713757b98b0381a8f7ecb9c/Expedia-Lite%20Record%203.mov)
+- https://github.com/user-attachments/assets/5c2d172f-8da7-47e2-a000-cc283376c2d7
