@@ -16,7 +16,7 @@
 
 - Action: Create Account and Log in.
 - Expected Result: Account is created and signed-in username appears
-- Observed Result: 
+- Observed Result: ![image alt](https://github.com/AJP7521/expedia-lite/blob/7dcf50a3b38bbc80c966c683066873771160e6d8/Login%20Page.png)
 
 - Action: Search Philadelphia 
 - Expected Result: Two bookings: Liberty Lan inn and Museum Walk Hotel
@@ -28,12 +28,12 @@
 
 - Action: Create booking
 - Expected Results: Confirm booking in account history
-- Observed Result:
+- Observed Result: ![image alt](https://github.com/AJP7521/expedia-lite/blob/7dcf50a3b38bbc80c966c683066873771160e6d8/Search%20Results.png)
 
 - Action: Delete Booking
 - Expected Results: Booking disapears from account history
-- Observed Result:
+- Observed Result: ![image alt](https://github.com/AJP7521/expedia-lite/blob/e8676f14ed605076d465572d7e59562d49530f78/Delete%20Booking.png)
 
 - Action: Log out
 - Expected Result: Account is logged out and sign in/ sign up page is displayed
-- Observed Result: 
+- Observed Result: ![image alt](https://github.com/AJP7521/expedia-lite/blob/e8676f14ed605076d465572d7e59562d49530f78/Log%20Out.png)
