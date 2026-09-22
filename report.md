@@ -37,3 +37,6 @@
 - Action: Log out
 - Expected Result: Account is logged out and sign in/ sign up page is displayed
 - Observed Result: ![image alt](https://github.com/AJP7521/expedia-lite/blob/e8676f14ed605076d465572d7e59562d49530f78/Log%20Out.png)
+
+## Video Demo
+
