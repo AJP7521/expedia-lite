@@ -1,0 +1,39 @@
+# Expedia Lite Report
+## Repository: https://github.com/AJP7521/expedia-lite
+## Current Local Commit: e3b43df96c7c89ef36d68563f4e11f0b7c7125e1
+
+## Implementation
+
+- Expedia Lite is a travel agent designed for finding hotel stays an managing simulated bookings. Users can create accounts using a username and password that saves their booking history and cancellations. Users can search cities, create bookings, review their history, cancel bookings, and delete test bookings.
+
+- The Vue Frontend handles search inputs, API requests, results, and each user's booking history. It also displays how much a booking is, if a booking is confirmed, and errors if a booking isn't found or a login issue is detected.
+
+- FastAPI provides the HTTP interface and authenticates accounts with session cookies.
+
+- The Python Backend seperates models, controllers, and database access. Models handle request and response schemas. Controllers handle authentication for cities that are in the database, pricing, and the ability to book a reservation. The database controller handles the SQLite transactions. 
+
+## Verification
+
+- Action: Create Account and Log in.
+- Expected Result: Account is created and signed-in username appears
+- Observed Result: 
+
+- Action: Search Philadelphia 
+- Expected Result: Two bookings: Liberty Lan inn and Museum Walk Hotel
+- Observed Result:
+
+- Action: Blank Search
+- Expected Results: No bookings are shown
+- Observed Result:
+
+- Action: Create booking
+- Expected Results: Confirm booking in account history
+- Observed Result:
+
+- Action: Delete Booking
+- Expected Results: Booking disapears from account history
+- Observed Result:
+
+- Action: Log out
+- Expected Result: Account is logged out and sign in/ sign up page is displayed
+- Observed Result: 
