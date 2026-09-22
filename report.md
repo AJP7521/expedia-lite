@@ -24,7 +24,7 @@
 
 - Action: Blank Search
 - Expected Results: No bookings are shown
-- Observed Result:
+- Observed Result: ![image alt] (https://github.com/AJP7521/expedia-lite/blob/d44364c3e57c53f7d8033101a6930a7292b72cfe/Blank%20Search.png)
 
 - Action: Create booking
 - Expected Results: Confirm booking in account history
