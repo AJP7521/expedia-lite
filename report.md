@@ -48,4 +48,4 @@ The Leaflet map was successfully added to the signed-in ZIP hotel search. FastAP
 
 The map displays an orange search-center dot, a blue 5 km radius circle, and hotel markers with name/address popups. The numbered hotel list uses bold names that are 25% larger than the descriptive text. Changing the ZIP clears previous results and the map. Provider hotel listings remain separate from the simulated booking data and do not establish availability, prices, or bookability.
 
--https://github.com/AJP7521/expedia-lite/blob/968673ceecf0e41c8c3082877195538c34aec920/Leaflet.png
+![image alt](https://github.com/AJP7521/expedia-lite/blob/968673ceecf0e41c8c3082877195538c34aec920/Leaflet.png)
