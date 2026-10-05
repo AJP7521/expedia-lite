@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import ZipLookupDemo from './components/ZipLookupDemo.vue'
 
 const account = ref(null)
 const authReady = ref(false)
@@ -213,5 +214,6 @@ async function search() {
       <div class="booking-list"><article v-for="booking in bookings" :key="booking.booking_id" class="booking-card"><div class="booking-symbol" aria-hidden="true">▤</div><div class="booking-info"><span class="status-badge" :class="booking.status">{{ booking.status }}</span><h3>{{ booking.hotel_name }}</h3><p>{{ booking.trip_name }} · {{ dateLabel(booking.check_in) }} – {{ dateLabel(booking.check_out) }}</p><details><summary>Booking reference</summary><span class="booking-id">{{ booking.booking_id }}</span></details></div><div class="booking-summary"><strong>{{ dollars.format(booking.stay_price_usd) }}</strong><span class="price-label">Total stay</span><div class="booking-actions"><button v-if="booking.status === 'confirmed'" class="text-button" :disabled="busy || historyLoading" @click="changeBooking('PATCH', booking.booking_id)">Cancel booking</button><button class="text-button delete-link" :disabled="busy || historyLoading" @click="pendingDelete = booking.booking_id">Delete</button></div></div></article></div>
     </section>
   </main>
+  <ZipLookupDemo v-if="account" :key="account.user_id" @session-expired="clearUser" />
   <footer><a class="brand footer-brand" href="#"><img src="/logo.svg" alt="" width="28" height="28" />Expedia<span>Lite</span></a><p>Small escapes. New perspectives.</p><span>Built for exploration · Simulated bookings only</span></footer>
 </template>

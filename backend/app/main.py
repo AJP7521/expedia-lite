@@ -1,9 +1,12 @@
 """HTTP adapter: validate requests, delegate to controllers, serialize contracts."""
-from fastapi import Cookie, Depends, FastAPI, Query, Response
+from fastapi import Cookie, Depends, FastAPI, HTTPException, Query, Response
 from fastapi.responses import JSONResponse
 
-from .controllers import accounts, bookings, trips
-from .controllers.errors import AuthenticationError, ConflictError, NotFoundError
+from . import config
+from .controllers import accounts, bookings, hotel_search, locations, trips
+from .controllers.errors import AuthenticationError, ConfigurationError, ConflictError, NotFoundError, ProviderError
+from .models.location import Location
+from .models.hotel_search import HotelSearchResult
 from .models import Booking, BookingCreate, BookingResult, BookingUpdate, TripResult, Account, AccountCreate, Credentials
 
 app = FastAPI(title="Expedia Agent API", version="0.1.0")
@@ -61,7 +64,30 @@ def logout(expedia_session: str | None = Cookie(default=None)):
 
 @app.get("/api/health")
 def health() -> dict[str, str]:
-    return {"status": "ok"}
+    return {"status": "ok", "geoapify": config.geoapify_key_status()}
+
+
+@app.get("/api/demo/zip-location", response_model=Location)
+def demo_zip_location():
+    return zip_location_response("16802")
+
+
+@app.get("/api/zip-location", response_model=Location)
+def get_zip_location(postcode: str = Query(..., min_length=5, max_length=5, pattern=r"^[0-9]{5}$")):
+    return zip_location_response(postcode)
+
+
+def zip_location_response(postcode: str):
+    """Share transport error mapping across the two ZIP endpoints."""
+    try:
+        location = locations.lookup_zip(postcode)
+    except ConfigurationError:
+        raise HTTPException(status_code=503, detail="Geocoding is not configured.") from None
+    except ProviderError:
+        raise HTTPException(status_code=502, detail="Geocoding provider request failed.") from None
+    if location is None:
+        raise HTTPException(status_code=404, detail=f"ZIP {postcode} could not be resolved.")
+    return location
 
 
 @app.get("/api/trips", response_model=list[TripResult])
@@ -88,3 +114,14 @@ def cancel_booking(booking_id: str, body: BookingUpdate, user: Account = Depends
 def delete_booking(booking_id: str, user: Account = Depends(current_user)):
     bookings.delete(booking_id, user.user_id)
     return Response(status_code=204)
+
+
+@app.get("/api/hotels", response_model=HotelSearchResult)
+def get_hotels(postcode: str = Query(..., min_length=5, max_length=5, pattern=r"^[0-9]{5}$"),
+               user: Account = Depends(current_user)):
+    try:
+        return hotel_search.search_hotels(postcode)
+    except ConfigurationError:
+        raise HTTPException(status_code=503, detail="Hotel search is not configured.") from None
+    except ProviderError:
+        raise HTTPException(status_code=502, detail="Hotel search could not be completed. Please try again.") from None

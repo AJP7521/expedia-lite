@@ -47,4 +47,4 @@ def test_city_is_required(params):
 
 
 def test_health_still_available():
-    assert client.get("/api/health").json() == {"status": "ok"}
+    assert client.get("/api/health").json()["status"] == "ok"
