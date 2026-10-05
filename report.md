@@ -47,3 +47,5 @@
 The Leaflet map was successfully added to the signed-in ZIP hotel search. FastAPI reuses `locations.lookup_zip(postcode)` to resolve a matching U.S. ZIP code, then requests Geoapify hotels within 5,000 meters of that returned latitude and longitude. The search center is the resolved postcode point, not the traveler's position or the entire ZIP boundary. Failed resolution ends the request without substituting another location.
 
 The map displays an orange search-center dot, a blue 5 km radius circle, and hotel markers with name/address popups. The numbered hotel list uses bold names that are 25% larger than the descriptive text. Changing the ZIP clears previous results and the map. Provider hotel listings remain separate from the simulated booking data and do not establish availability, prices, or bookability.
+
+![image alt](https://github.com/AJP7521/expedia-lite/blob/968673ceecf0e41c8c3082877195538c34aec920/Leaflet.png)
