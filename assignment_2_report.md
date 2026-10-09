@@ -38,3 +38,5 @@ The backend needs OpenRouter support, and the selected model needs sufficient cr
 I went back to the OpenRouter website to troubleshoot and realized the API key usage limit was set to zero. I quickly changed this and restarted Codex, and it worked. 
 
 ## Video of Chatbot
+
+https://github.com/AJP7521/expedia-lite/blob/1ef1b5c6c8fbf87cc43c2e645560c3e9ab685622/Video%20Demo%203.mov
